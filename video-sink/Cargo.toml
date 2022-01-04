@@ -1,0 +1,32 @@
+[package]
+name = "video-sink"
+version = "0.1.0"
+repository = "https://github.com/atolab/janu-flow-examples"
+homepage = "http://janu.io"
+authors = ["kydos <angelo@icorsaro.net>",
+           "gabrik <gabriele.baldoni@gmail.com>",
+           "Julien Loudet <julien.loudet@adlinktech.com>",]
+edition = "2018"
+license = " EPL-2.0 OR Apache-2.0"
+categories = ["network-programming"]
+description = "Janu Flow Examples"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-std = { version = "=1.9.0", features = ["attributes","unstable"] }
+opencv = "0.53.0"
+janu-flow = { git = "https://github.com/virtuehive/janu-flow.git", branch = "main"}
+async-trait = "0.1"
+
+[lib]
+name = "video_sink"
+crate-type=["cdylib"]
+path="src/lib.rs"
+
+[package.metadata.januflow]
+id = "video-sink"
+kind = "sink"
+inputs=[ {id ="Frame", type="bytes"}]
+
